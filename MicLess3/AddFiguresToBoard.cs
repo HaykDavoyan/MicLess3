@@ -7,11 +7,11 @@ class AddFiguresToBoard
     /// </summary>
     /// <param name="board"></param>
     /// <param name="coordOfKnight"></param>
-    public void AddFigureToBoard(string[,] Board, string coord, string figure)
+    public void AddFigureToBoard(string[,] board, Coordinate coord, string figure)
     {
-        char column = coord[0];
-        int row = int.Parse(coord.Substring(1)) - 1;
+        int row = coord.row - 1;
+        int column = coord.column - 'A';
 
-        Board[row, column - 'A'] = figure;
+        board[row, column] = figure;
     }
 }

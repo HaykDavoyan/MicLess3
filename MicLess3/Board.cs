@@ -2,6 +2,9 @@
 
 class Board
 {
+    /// <summary>
+    /// Print the matrix 8*8 for Chess board and give tham colors.
+    /// </summary>
     AddLetters letters = new AddLetters();
 
     public void PrintBoardNew(string[,] board)
@@ -15,11 +18,11 @@ class Board
 
                 if ((i + j) % 2 == 0)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
                 }
                 else
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
                 }
                 Console.Write(" " + board[i, j]);
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -32,7 +35,7 @@ class Board
         }
     }
     /// <summary>
-    /// Print the matric 8*8 for Chess board and give tham colors.
+    /// Print the matrix 8*8 for Chess board and give tham colors.
     /// </summary>
     /// <param name="board"></param>
     public void PrintBoard(string[,] board)
@@ -46,11 +49,11 @@ class Board
                 board[i, j] = " ";
                 if ((i + j) % 2 == 0)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
                 }
                 else
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
                 }
                 Console.Write(" " + board[i, j]);
                 Console.BackgroundColor = ConsoleColor.Black;
