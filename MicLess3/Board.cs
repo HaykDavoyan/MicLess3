@@ -65,5 +65,4 @@ class Board
             Console.WriteLine();
         }
     }
-   
 }

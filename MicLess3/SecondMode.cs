@@ -1,46 +1,50 @@
-﻿namespace MicLess3;
+﻿using MicLess3.Figures;
+
+namespace MicLess3;
 
 public class SecondMode
 {
+    Rook rook = new Rook();
+    Queen queen = new Queen();
+    King king = new King();
+
     /// <summary>
-    /// Add the five figures to the board for this game mode.
+    /// Enter the coordinates for four figures and add it to board.
     /// </summary>
     /// <param name="board"></param>
-
-    Coordinate coord = new Coordinate();
-
     public void SecondGameMode(string[,] board)
     {
         PrintEmptyBoard(board);
 
         Console.WriteLine("Enter the coordinates for the black king");
-        AddFigures(board, Console.ReadLine().ToLower(), "K");
-        PrintChessboard(board);
-
-        Console.WriteLine("Enter the coordinates for the first black rook");
-        AddFigures(board, Console.ReadLine().ToLower(), "R");
+        Coordinate blackKingCoordinates = Coordinate.ParseCoordinate(Console.ReadLine());
+        AddFigures(board, blackKingCoordinates, "K");
         PrintChessboard(board);
 
         Console.WriteLine("Enter the coordinates for the black Queen");
-        AddFigures(board, Console.ReadLine().ToLower(), "Q");
+        Coordinate blackQueenCoordinates = Coordinate.ParseCoordinate(Console.ReadLine());
+        AddFigures(board, blackQueenCoordinates, "Q");
+        PrintChessboard(board);
+
+        Console.WriteLine("Enter the coordinates for the first black rook");
+        Coordinate firstBlackRookCoordinates = Coordinate.ParseCoordinate(Console.ReadLine());
+        AddFigures(board, firstBlackRookCoordinates, "R");
         PrintChessboard(board);
 
         Console.WriteLine("Enter the coordinates for the second black rook");
-        AddFigures(board, Console.ReadLine().ToLower(), "R");
+        Coordinate secondBlackRookCoordinates = Coordinate.ParseCoordinate(Console.ReadLine());
+        AddFigures(board, secondBlackRookCoordinates, "R");
         PrintChessboard(board);
 
         Console.WriteLine("Enter the coordinates for the white king");
-        AddFigures(board, Console.ReadLine().ToLower(), "k");
+        Coordinate whiteKingCoordinates = Coordinate.ParseCoordinate(Console.ReadLine());
+        AddFigures(board, whiteKingCoordinates, "k");
         PrintChessboard(board);
 
         Console.WriteLine("Chessboard printed. Press Enter to continue.");
         while (Console.ReadKey().Key != ConsoleKey.Enter) ;
-
     }
-    /// <summary>
-    /// Print the empty board for second game mode.
-    /// </summary>
-    /// <param name="board"></param>
+
     public void PrintEmptyBoard(string[,] board)
     {
         for (int i = 0; i < board.GetLength(0); i++)
@@ -51,36 +55,24 @@ public class SecondMode
             }
         }
     }
-    /// <summary>
-    /// Add the figures to the board for second game mode and check empty coordinates for figurs.
-    /// </summary>
-    /// <param name="board"></param>
-    /// <param name="coordinates"></param>
-    /// <param name="figure"></param>
-    public void AddFigures(string[,] board, string coordinates, string figure)
+
+    public void AddFigures(string[,] board, Coordinate coordinate, string figure)
     {
         while (true)
         {
-            if (coordinates.Length == 2 && char.IsLetter(coordinates[0]) && char.IsDigit(coordinates[1]))
-            {
-                int col = coordinates[0] - 'a';
-                int row = (coordinates[1] - '1');
+            int col = coordinate.column - 'A';
+            int row = coordinate.row - 1;
 
-                if (row >= 0 && row < board.GetLength(0) && col >= 0 && col < board.GetLength(1))
+            if (row >= 0 && row < board.GetLength(0) && col >= 0 && col < board.GetLength(1))
+            {
+                if (board[row, col] == " ")
                 {
-                    if (board[row, col] == " ")
-                    {
-                        board[row, col] = figure;
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid coordinates. The square is not empty. Try again:");
-                    }
+                    board[row, col] = figure;
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("Invalid coordinates. Try again:");
+                    Console.WriteLine("Invalid coordinates. The square is not empty. Try again:");
                 }
             }
             else
@@ -88,14 +80,10 @@ public class SecondMode
                 Console.WriteLine("Invalid coordinates. Try again:");
             }
 
-            coordinates = Console.ReadLine().ToLower();
+            coordinate = Coordinate.ParseCoordinate(Console.ReadLine());
         }
     }
 
-    /// <summary>
-    /// Print the chess board with all figures.
-    /// </summary>
-    /// <param name="board"></param>
     public void PrintChessboard(string[,] board)
     {
         Board chessBoard = new Board();

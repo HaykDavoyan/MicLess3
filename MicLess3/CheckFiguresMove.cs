@@ -28,10 +28,10 @@ class CheckFiguresMove
         Console.WriteLine();
 
         Console.Write("Enter the first Coordinate: ");
-        Coordinate firstCoord = coordinate.ParseCoordinate(Console.ReadLine());
+        Coordinate firstCoord = Coordinate.ParseCoordinate(Console.ReadLine());
 
         Console.Write("Enter the second Coordinate: ");
-        Coordinate secondCoord = coordinate.ParseCoordinate(Console.ReadLine());
+        Coordinate secondCoord = Coordinate.ParseCoordinate(Console.ReadLine());
 
         bool isValidMove = false;
 

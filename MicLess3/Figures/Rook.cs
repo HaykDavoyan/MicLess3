@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace MicLess3.Figures;
 
-namespace MicLess3.Figures;
-
- class Rook
+class Rook
 {
     /// <summary>
     /// Check where the move for a rook is valid.
