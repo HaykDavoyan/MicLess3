@@ -26,7 +26,7 @@ class CheckFiguresMove
         
         char figure = char.ToUpper(Console.ReadKey().KeyChar);
         Console.WriteLine();
-
+        
         Console.Write("Enter the first Coordinate: ");
         Coordinate firstCoord = Coordinate.ParseCoordinate(Console.ReadLine());
 

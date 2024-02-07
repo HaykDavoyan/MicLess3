@@ -1,7 +1,12 @@
-﻿namespace MicLess3.Figures;
+﻿using System.Drawing;
+
+namespace MicLess3.Figures;
 
 class King
 {
+    //King wKing = new King();    
+    //King bKing = new King();
+    //public Color color;
     /// <summary>
     /// Check where the move for King is valid.
     /// </summary>
@@ -10,6 +15,8 @@ class King
     /// <returns></returns>
     public bool CheckMove(Coordinate firstCoord, Coordinate secondCoord)
     {
+        //wKing.color = Color.White;
+        //bKing.color = Color.Black;
         int rowDifference = Math.Abs(secondCoord.row - firstCoord.row);
         int columnDifference = Math.Abs(secondCoord.column - firstCoord.column);
 
