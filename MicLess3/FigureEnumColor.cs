@@ -1,6 +1,6 @@
 ﻿namespace MicLess3;
 
-enum FigureColor
+enum FigureEnumColor
 {
     white,
     black,

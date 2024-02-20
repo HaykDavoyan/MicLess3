@@ -3,10 +3,11 @@
 class AddFiguresToBoard
 {
     /// <summary>
-    /// Add letters matching figure to the board.
+    /// Add the figures on the board.
     /// </summary>
     /// <param name="board"></param>
-    /// <param name="coordOfKnight"></param>
+    /// <param name="coord"></param>
+    /// <param name="figure"></param>
     public void AddFigureToBoard(string[,] board, Coordinate coord, string figure)
     {
         int row = coord.row - 1;

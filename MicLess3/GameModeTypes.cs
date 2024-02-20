@@ -12,25 +12,24 @@ internal class GameModeTypes
     {
         comment = "Enter the game mode: Alternative - 1 or Classic - 2\n";
         Console.Write(comment);
-        string userInput;
+        string userInput = Console.ReadLine();
 
-        do
+        switch (userInput)
         {
-            userInput = Console.ReadLine();
-
-            switch (userInput)
-            {
-                case "1":
-                    SecondMode secondMode = new SecondMode();
-                    secondMode.SecondGameMode(board);
-                    break;
-                case "2":
-                    break;
-                default:
-                    Console.WriteLine("Invalid input");
-                    break;
-            }
-        } while (userInput != "1" && userInput != "2");
+            case "1":
+                SecondMode secondMode = new SecondMode();
+                secondMode.SecondGameMode(board);
+                break;
+            case "2":
+                Board chessBoard = new Board();
+                chessBoard.PrintBoard(board);
+                CheckFiguresMove figuresMove = new CheckFiguresMove();
+                figuresMove.CheckFigureMove(board);
+                break;
+            default:
+                Console.WriteLine("Invalid input");
+                break;
+        }
 
         return userInput;
     }

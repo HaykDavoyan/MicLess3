@@ -1,4 +1,5 @@
 ﻿using MicLess3.Figures;
+using System.Drawing;
 
 namespace MicLess3;
 
@@ -9,9 +10,9 @@ class CheckFiguresMove
     /// </summary>
     Knight knight = new Knight();
     Bishop bishop = new Bishop();
-    Rook rook = new Rook();
-    Queen queen = new Queen();
-    King king = new King();
+    Rook rook = new Rook(Color.White);
+    Queen queen = new Queen(Color.Black);
+    King king = new King(Color.Black);
     AddFiguresToBoard figures = new AddFiguresToBoard();
     Board board = new Board();
     Coordinate coordinate = new Coordinate();
