@@ -47,12 +47,13 @@ public class SecondMode
         {
             if (!validator.IsUnderAttack(board, allFiguresCoordinates, whiteKingCoordinates))
             {
-                if (!validator.IsCheckmate(board, "k") || !validator.IsStalemate(board, "k"))
+                if (!validator.IsCheckmate(board, "k",whiteKingCoordinates) && !validator.IsStalemate(board, "k", whiteKingCoordinates))
                 {
                     AddFigure(board, whiteKingCoordinates, "k");
                     PrintChessboard(board);
                     break;
                 }
+   
             }
             else
             {

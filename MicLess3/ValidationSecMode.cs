@@ -12,13 +12,13 @@ internal class ValidationSecMode
     Rook rook1 = new Rook(Color.Black);
     Rook rook2 = new Rook(Color.Black);
 
-    public bool IsCheckmate(string[,] board, string kingSymbol)
+    public bool IsCheckmate(string[,] board, string kingSymbol, Coordinate wKing)
     {
-        Coordinate kingCoordinates = FindKingCoordinate(board, kingSymbol);
+       // Coordinate kingCoordinates = FindKingCoordinate(board, kingSymbol);
 
-        if (IsUnderAttack(board, allFiguresCoordinates, kingCoordinates))
+        if (IsUnderAttack(board, allFiguresCoordinates, wKing))
         {
-            if (!HasLegalMoves(board, kingCoordinates))
+            if (!HasLegalMoves(board, wKing))
             {
                 Console.WriteLine("****CHECKMATE****");
                 return true;
@@ -28,11 +28,11 @@ internal class ValidationSecMode
         return false;
     }
 
-    public bool IsStalemate(string[,] board, string kingSymbol)
+    public bool IsStalemate(string[,] board, string kingSymbol, Coordinate wKing)
     {
-        Coordinate kingCoordinates = FindKingCoordinate(board, kingSymbol);
+        //Coordinate kingCoordinates = FindKingCoordinate(board, kingSymbol);
 
-        if (!IsUnderAttack(board, allFiguresCoordinates, kingCoordinates))
+        if (!IsUnderAttack(board, allFiguresCoordinates, wKing))
         {
             if (!HasAnyLegalMoves(board, kingSymbol))
             {
@@ -62,7 +62,6 @@ internal class ValidationSecMode
                 }
             }
         }
-
         return false;
     }
 
