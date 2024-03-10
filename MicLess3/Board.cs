@@ -1,44 +1,23 @@
-﻿namespace MicLess3;
+﻿using System;
 
-class Board
+namespace MicLess3;
+
+public class Board
 {
-    /// <summary>
-    /// Print the matrix 8*8 for Chess board and give tham colors.
-    /// </summary>
-    AddLetters letters = new AddLetters();
+    private AddLetters letters = new AddLetters();
+    public string[,] board = new string[8, 8];
 
-    public void PrintBoardNew(string[,] board)
+    public void ClearBoard()
     {
-        letters.AddLettersOnTheBoard();
-
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 8; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 8; j++)
             {
-
-                if ((i + j) % 2 == 0)
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkBlue;
-                }
-                else
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                }
-                Console.Write(" " + board[i, j]);
-                Console.BackgroundColor = ConsoleColor.Black;
-                if (j == 7)
-                {
-                    Console.Write("| " + Convert.ToString(i + 1));
-                }
+                board[i, j] = " ";
             }
-            Console.WriteLine();
         }
     }
-    /// <summary>
-    /// Print the matrix 8*8 for Chess board and give tham colors.
-    /// </summary>
-    /// <param name="board"></param>
-    public void PrintBoard(string[,] board)
+    public void PrintBoard()
     {
         letters.AddLettersOnTheBoard();
 
@@ -64,5 +43,34 @@ class Board
             }
             Console.WriteLine();
         }
+    }
+
+    public void PrintBoardNew()
+    {
+        letters.AddLettersOnTheBoard();
+
+        for (int i = 0; i < board.GetLength(0); i++)
+        {
+            for (int j = 0; j < board.GetLength(1); j++)
+            {
+
+                if ((i + j) % 2 == 0)
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                }
+                Console.Write(" " + board[i, j]);
+                Console.BackgroundColor = ConsoleColor.Black;
+                if (j == 7)
+                {
+                    Console.Write("| " + Convert.ToString(i + 1));
+                }
+            }
+            Console.WriteLine();
+        }
+
     }
 }

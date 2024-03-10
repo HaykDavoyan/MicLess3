@@ -1,4 +1,6 @@
-﻿namespace MicLess3;
+﻿using System;
+
+namespace MicLess3;
 
 internal class GameModeTypes
 {
@@ -6,9 +8,9 @@ internal class GameModeTypes
     /// Creating two game modes Alternative - 1 and classic - 2.
     /// </summary>
     /// <param name="comment"></param>
-    /// <param name="board"></param>
+    /// <param name="chessBoard"></param>
     /// <returns></returns>
-    public string EnterGameMode(out string comment, string[,] board)
+    public string EnterGameMode(out string comment, Board chessBoard)
     {
         comment = "Enter the game mode: Alternative - 1 or Classic - 2\n";
         Console.Write(comment);
@@ -18,13 +20,12 @@ internal class GameModeTypes
         {
             case "1":
                 SecondMode secondMode = new SecondMode();
-                secondMode.SecondGameMode(board);
+                secondMode.SecondGameMode();
                 break;
             case "2":
-                Board chessBoard = new Board();
-                chessBoard.PrintBoard(board);
+                chessBoard.PrintBoard();
                 CheckFiguresMove figuresMove = new CheckFiguresMove();
-                figuresMove.CheckFigureMove(board);
+                figuresMove.CheckFigureMove(chessBoard);
                 break;
             default:
                 Console.WriteLine("Invalid input");

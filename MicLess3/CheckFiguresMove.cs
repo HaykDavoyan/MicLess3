@@ -1,73 +1,66 @@
-﻿using MicLess3.Figures;
+﻿using System;
+using MicLess3.Figures;
 using System.Drawing;
 
-namespace MicLess3;
-
-class CheckFiguresMove
+namespace MicLess3
 {
-    /// <summary>
-    /// Creating the Constructors for Figures.
-    /// </summary>
-    Knight knight = new Knight();
-    Bishop bishop = new Bishop();
-    Rook rook = new Rook(Color.White);
-    Queen queen = new Queen(Color.Black);
-    King king = new King(Color.Black);
-    AddFiguresToBoard figures = new AddFiguresToBoard();
-    Board board = new Board();
-    Coordinate coordinate = new Coordinate();
-
-    /// <summary>
-    /// Checking figure moves and putting the letter on the board.
-    /// </summary>
-    /// <param name="Board"></param>
-    public void CheckFigureMove(string[,] Board)
+    class CheckFiguresMove
     {
-        Console.Write("Enter the figure (N for Knight, B for Bishop, R for rook, Q for Queen, K for King): ");
-        
-        char figure = char.ToUpper(Console.ReadKey().KeyChar);
-        Console.WriteLine();
-        
-        Console.Write("Enter the first Coordinate: ");
-        Coordinate firstCoord = Coordinate.ParseCoordinate(Console.ReadLine());
+        Knight knight = new Knight();
+        Bishop bishop = new Bishop();
+        Rook rook = new Rook(Color.White);
+        Queen queen = new Queen(Color.Black);
+        King king = new King(Color.Black);
+        AddFiguresToBoard figures = new AddFiguresToBoard();
 
-        Console.Write("Enter the second Coordinate: ");
-        Coordinate secondCoord = Coordinate.ParseCoordinate(Console.ReadLine());
+        public void CheckFigureMove(Board chessBoard)
+        {
+            Console.Write("Enter the figure (N for Knight, B for Bishop, R for rook, Q for Queen, K for King): ");
 
-        bool isValidMove = false;
+            char figure = char.ToUpper(Console.ReadKey().KeyChar);
+            Console.WriteLine();
 
-        if (figure == 'N')
-        {
-            isValidMove = knight.CheckMove(firstCoord, secondCoord);
-        }
-        else if (figure == 'B')
-        {
-            isValidMove = bishop.CheckMove(firstCoord, secondCoord);
-        }
-        else if (figure == 'R')
-        {
-            isValidMove = rook.CheckMove(firstCoord, secondCoord);
-        }
-        else if (figure == 'Q')
-        {
-            isValidMove = queen.CheckMove(firstCoord, secondCoord);
-        }
-        else if (figure == 'K')
-        {
-            isValidMove = king.CheckMove(firstCoord, secondCoord);
-        }
+            Console.Write("Enter the first Coordinate: ");
+            Coordinate firstCoord = Coordinate.ParseCoordinate(Console.ReadLine());
 
-        if (isValidMove)
-        {
-            Console.WriteLine($"Valid {figure} move!");
-            figures.AddFigureToBoard(Board, firstCoord, figure.ToString());
-            figures.AddFigureToBoard(Board, secondCoord, figure.ToString());
-            board.PrintBoardNew(Board);
+            Console.Write("Enter the second Coordinate: ");
+            Coordinate secondCoord = Coordinate.ParseCoordinate(Console.ReadLine());
 
-        }
-        else
-        {
-            Console.WriteLine($"Invalid {figure} move!");
+            bool isValidMove = false;
+
+            if (figure == 'N')
+            {
+                isValidMove = knight.CheckMove(firstCoord, secondCoord);
+            }
+            else if (figure == 'B')
+            {
+                isValidMove = bishop.CheckMove(firstCoord, secondCoord);
+            }
+            else if (figure == 'R')
+            {
+                isValidMove = rook.CheckMove(firstCoord, secondCoord);
+            }
+            else if (figure == 'Q')
+            {
+                isValidMove = queen.CheckMove(firstCoord, secondCoord);
+            }
+            else if (figure == 'K')
+            {
+                isValidMove = king.CheckMove(firstCoord, secondCoord);
+            }
+
+            if (isValidMove)
+            {
+                Console.WriteLine($"Valid {figure} move!");
+                figures.AddFigureToBoard(chessBoard, firstCoord, figure.ToString());
+                figures.AddFigureToBoard(chessBoard, secondCoord, figure.ToString());
+                chessBoard.PrintBoardNew();
+                chessBoard.ClearBoard();
+            }
+            else
+            {
+                Console.WriteLine($"Invalid {figure} move!");
+            }
         }
     }
 }

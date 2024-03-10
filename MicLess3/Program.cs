@@ -1,23 +1,20 @@
 ﻿using System;
 
-namespace MicLess3
+namespace MicLess3;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        GameModeTypes gameMode = new GameModeTypes();
+        string comment;
+        Board chessBoard = new Board(); 
+        string userInput = gameMode.EnterGameMode(out comment, chessBoard); 
+        if (userInput == "1")
         {
-            GameModeTypes gameMode = new GameModeTypes();
-            string comment;
-            string[,] board = new string[8, 8];
-            string userInput = gameMode.EnterGameMode(out comment, board);
-            if (userInput == "1")
-            {
-                return;
-            }
-            Board chessBoard = new Board();
-            chessBoard.PrintBoard(board);
-            CheckFiguresMove figuresMove = new CheckFiguresMove();
-            figuresMove.CheckFigureMove(board);
+            return;
         }
+        CheckFiguresMove figuresMove = new CheckFiguresMove();
+        figuresMove.CheckFigureMove(chessBoard); 
     }
 }

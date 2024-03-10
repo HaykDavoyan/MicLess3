@@ -1,14 +1,15 @@
 ﻿using System.Drawing;
 
 namespace MicLess3.Figures;
+
 public class Queen : Figure
 {
     public Queen(Color color) : base("Q", color) { }
 
-    public bool CheckMove(Coordinate firstCoord, Coordinate secondCoord)
+    public override bool CheckMove(Coordinate currentCoordinate, Coordinate newCoordinate)
     {
-        int rowDifference = Math.Abs(secondCoord.row - firstCoord.row);
-        int columnDifference = Math.Abs(secondCoord.column - firstCoord.column);
+        int rowDifference = Math.Abs(newCoordinate.row - currentCoordinate.row);
+        int columnDifference = Math.Abs(newCoordinate.column - currentCoordinate.column);
 
         return rowDifference == 0 ||
                columnDifference == 0 ||

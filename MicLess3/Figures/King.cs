@@ -6,10 +6,10 @@ public class King : Figure
 {
     public King(Color color) : base("K", color) { }
 
-    public bool CheckMove(Coordinate firstCoord, Coordinate secondCoord)
+    public override bool CheckMove(Coordinate currentCoordinate, Coordinate newCoordinate)
     {
-        int rowDifference = Math.Abs(secondCoord.row - firstCoord.row);
-        int columnDifference = Math.Abs(secondCoord.column - firstCoord.column);
+        int rowDifference = Math.Abs(newCoordinate.row - currentCoordinate.row);
+        int columnDifference = Math.Abs(newCoordinate.column - currentCoordinate.column);
 
         return (rowDifference == 0 && columnDifference == 1) ||
                (rowDifference == 1 && columnDifference == 0) ||
